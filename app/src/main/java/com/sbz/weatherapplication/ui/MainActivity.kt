@@ -35,11 +35,11 @@ class MainActivity : AppCompatActivity() {
 
         val jsonRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
-            Response.Listener { response ->
+            { response ->
 //                Toast.makeText(this, response.toString(), Toast.LENGTH_SHORT).show()
                 setValues(response)
             },
-            Response.ErrorListener {
+            {
                 Toast.makeText(this, "Some Error Occurred", Toast.LENGTH_SHORT).show()
             })
 
