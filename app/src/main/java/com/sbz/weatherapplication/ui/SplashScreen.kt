@@ -9,6 +9,7 @@ import android.location.LocationRequest
 import android.media.audiofx.Equalizer.Settings
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
@@ -45,6 +46,12 @@ class SplashScreen : AppCompatActivity() {
                         Toast.makeText(this, "Something Went Wrong", Toast.LENGTH_SHORT).show()
                     } else {
 //                         Toast.makeText(this, "Location Granted Successfully", Toast.LENGTH_SHORT).show()
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            val intent = Intent(this, MainActivity::class.java)
+                            intent.putExtra("long", location.longitude.toString())
+                            intent.putExtra("late", location.latitude.toString())
+                            startActivity(intent)
+                        }, 2500)
                     }
                 }
 
